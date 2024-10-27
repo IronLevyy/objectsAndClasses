@@ -32,4 +32,25 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String toString() {
+        return "Название: " + name + " Автор: " + author.toString() + " Год выпуска: " + yearPublication;
+    }
+
+    public boolean equals(Book comparable) {
+        if (this == comparable) {
+            return true;
+        }
+        if (this.getClass() != comparable.getClass() || comparable == null) {
+            return false;
+        }
+        return this.name.equals(comparable.name) && this.author.equals(comparable.author) && this.yearPublication == comparable.yearPublication;
+    }
+
+    public int hashCode() {
+        int result = name == null ? 0 : name.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + yearPublication;
+        return result;
+    }
 }
